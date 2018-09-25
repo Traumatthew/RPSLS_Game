@@ -30,7 +30,7 @@ namespace RPSLS
                 player2 = new Human();
             }
         }
-        public void GetPlayerGestures()
+        public void GetChoiceGestures()
         {
             player1.GetChoiceGesture();
             player2.GetChoiceGesture();
@@ -46,55 +46,106 @@ namespace RPSLS
             {
                 Console.WriteLine(player1.name + " Tie!");
             }
-            else if (player1.gesture == 1 && player2.gesture == 2 || player2.gesture == 5)
+            else if (player1.gesture == 1 && player2.gesture == 2)
             {
                 Console.WriteLine(player1.name + " Loses!");
             }
-            else if (player1.gesture == 1 && player2.gesture == 3 || player2.gesture == 4) 
+            else if (player1.gesture == 1 && player2.gesture == 3)
             {
                 Console.WriteLine(player1.name + " Wins!");
+                player1.score++;
             }
-            else if (player1.gesture == 2 && player2.gesture == 1 || player2.gesture == 5)
+            else if (player1.gesture == 1 && player2.gesture == 4)
             {
                 Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
+            }
+            else if (player1.gesture == 1 && player2.gesture == 5)
+            {
+                Console.WriteLine(player1.name + "Loses!");
+            }
+            else if (player1.gesture == 2 && player2.gesture == 1)
+            {
+                Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
             }
             else if (player1.gesture == 2 && player2.gesture == 2)
             {
                 Console.WriteLine(player1.name + "Tie!");
             }
-            else if (player1.gesture == 2 && player2.gesture == 3 || player2.gesture == 4)
+            else if (player1.gesture == 2 && player2.gesture == 3)
             {
                 Console.WriteLine(player1.name + "Loses!");
             }
-            else if (player1.gesture == 3 && player2.gesture == 1 || player2.gesture == 5)
-            {
-                Console.WriteLine(player1.name + "Loses!");
-            }
-            else if (player1.gesture == 3 && player2.gesture == 2 || player2.gesture == 4)
+            else if (player1.gesture == 2 && player2.gesture == 4)
             {
                 Console.WriteLine(player1.name + "Win!");
+                player1.score++;
+            }
+            else if (player1.gesture == 2 && player2.gesture == 5)
+            {
+                Console.WriteLine(player1.name + "Win!");
+                player1.score++;
+            }
+            else if (player1.gesture == 3 && player2.gesture == 1)
+            {
+                Console.WriteLine(player1.name + "Lose!");
+            }
+            else if (player1.gesture == 3 && player2.gesture == 2)
+            {
+                Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
             }
             else if (player1.gesture == 3 && player2.gesture == 3)
             {
                 Console.WriteLine(player1.name + "Tie!");
             }
-            else if (player1.gesture == 4 && player2.gesture == 1 || player2.gesture == 3)
+            else if (player1.gesture == 3 && player2.gesture == 4)
             {
-                Console.WriteLine(player1.name + "Loses!");
+                Console.WriteLine(player1.name + "Win!");
+                player1.score++;
+            }
+            else if (player1.gesture == 3 && player2.gesture == 5)
+            {
+                Console.WriteLine(player1.name + "Lose!");
+            }
+            else if (player1.gesture == 4 && player2.gesture == 1)
+            {
+                Console.WriteLine(player1.name + "Lose!");
+            }
+            else if (player1.gesture == 4 && player2.gesture == 2)
+            {
+                Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
+            }
+            else if (player1.gesture == 4 && player2.gesture == 3)
+            {
+                Console.WriteLine(player1.name + "Lose!");
             }
             else if (player1.gesture == 4 && player2.gesture == 4)
             {
                 Console.WriteLine(player1.name + "Tie!");
             }
-            else if (player1.gesture == 4 && player2.gesture == 2 || player2.gesture == 5)
+            else if (player1.gesture == 4 && player2.gesture == 5)
             {
                 Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
             }
-            else if (player1.gesture == 5 && player2.gesture == 1 || player2.gesture == 3)
+            else if (player1.gesture == 5 && player2.gesture == 1)
             {
                 Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
             }
-            else if (player1.gesture == 5 && player2.gesture == 2 || player2.gesture == 4)
+            else if (player1.gesture == 5 && player2.gesture == 2)
+            {
+                Console.WriteLine(player1.name + "Lose!");
+            }
+            else if (player1.gesture == 5 && player2.gesture == 3)
+            {
+                Console.WriteLine(player1.name + "Wins!");
+                player1.score++;
+            }
+            else if (player1.gesture == 5 && player2.gesture == 4)
             {
                 Console.WriteLine(player1.name + "Lose!");
             }
@@ -109,13 +160,15 @@ namespace RPSLS
         }
         public void GetName()
         {
-            GetName();
+            player1.GetName();
+            player2.GetName();
         }
         public void RunGame()
         {
             DeterminePlayers();
             GetName();
-            GetPlayerGestures();
+            while (CompareGestures().score <= 3; RunGame() ) ;
+            GetChoiceGestures();
             CompareGestures();
         }
     }   

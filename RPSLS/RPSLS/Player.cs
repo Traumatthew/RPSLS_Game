@@ -17,7 +17,7 @@ namespace RPSLS
 
             public abstract void GetName();
 
-             public abstract void Score();
+        public abstract void Score();
 
         }
 
